@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Search, SlidersHorizontal, MapPin, Plus, Home, Compass, Heart, User } from 'lucide-react';
 import { StudentPost } from './StudentPost';
 
@@ -112,26 +113,35 @@ const FAB: React.FC = () => (
   </button>
 );
 
-const BottomNav: React.FC = () => (
-  <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-6 py-3 flex justify-between items-center z-50 pb-safe">
-    <button className="flex flex-col items-center gap-1 text-[#990000]">
-      <Home className="w-6 h-6" />
-      <span className="text-[10px] font-bold">Home</span>
-    </button>
-    <button className="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors">
-      <Compass className="w-6 h-6" />
-      <span className="text-[10px] font-medium">Discover</span>
-    </button>
-    <button className="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors">
-      <Heart className="w-6 h-6" />
-      <span className="text-[10px] font-medium">Saved</span>
-    </button>
-    <button className="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors">
-      <User className="w-6 h-6" />
-      <span className="text-[10px] font-medium">Profile</span>
-    </button>
-  </div>
-);
+const BottomNav: React.FC = () => {
+  const navigate = useNavigate();
+  return (
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-6 py-3 flex justify-between items-center z-50 pb-safe">
+      <button className="flex flex-col items-center gap-1 text-[#990000]">
+        <Home className="w-6 h-6" />
+        <span className="text-[10px] font-bold">Home</span>
+      </button>
+      <button 
+        onClick={() => navigate('/discover')}
+        className="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors"
+      >
+        <Compass className="w-6 h-6" />
+        <span className="text-[10px] font-medium">Discover</span>
+      </button>
+      <button className="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors">
+        <Heart className="w-6 h-6" />
+        <span className="text-[10px] font-medium">Saved</span>
+      </button>
+      <button 
+        onClick={() => navigate('/profile')}
+        className="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors"
+      >
+        <User className="w-6 h-6" />
+        <span className="text-[10px] font-medium">Profile</span>
+      </button>
+    </div>
+  );
+};
 
 const CitySelector: React.FC = () => (
     <div className="w-8 h-8 bg-[#990000] rounded-lg flex items-center justify-center text-white shadow-sm">

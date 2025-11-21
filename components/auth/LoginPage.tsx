@@ -26,37 +26,38 @@ const LoginPage: React.FC = () => {
         setError(null);
         setIsLoading(true);
         
-        try {
-            const loginUrl = `${config.apiBaseUrl}${config.endpoints.login}`;
-            console.log(`Attempting login via: ${loginUrl}`);
+        // try {
+        //     const loginUrl = `${config.apiBaseUrl}${config.endpoints.login}`;
+        //     console.log(`Attempting login via: ${loginUrl}`);
             
-            const response = await axios.post(loginUrl, {
-                email: email,
-                password: password
-            });
+        //     const response = await axios.post(loginUrl, {
+        //         email: email,
+        //         password: password
+        //     });
 
-            console.log('Login success:', response.data);
+        //     console.log('Login success:', response.data);
 
-            // Store the token (Adjust property name based on actual API response, e.g., 'token', 'access_token')
-            const token = response.data.token || response.data.access_token;
-            if (token) {
-                localStorage.setItem('authToken', token);
-            }
+        //     // Store the token (Adjust property name based on actual API response, e.g., 'token', 'access_token')
+        //     const token = response.data.token || response.data.access_token;
+        //     if (token) {
+        //         localStorage.setItem('authToken', token);
+        //     }
 
-            navigate('/home');
-        } catch (err: any) {
-            console.error('Login error:', err);
+        //     navigate('/home');
+        // } catch (err: any) {
+        //     console.error('Login error:', err);
             
-            // Extract error message from backend response if available
-            const message = err.response?.data?.message || 'Login failed. Please check your credentials.';
-            setError(message);
-        } finally {
-            setIsLoading(false);
-        }
+        //     // Extract error message from backend response if available
+        //     const message = err.response?.data?.message || 'Login failed. Please check your credentials.';
+        //     setError(message);
+        // } finally {
+        //     setIsLoading(false);
+        // }
+        navigate('/home');
     };
 
     const handleGoogleLogin = () => {
-    window.location.href = `${config.apiBaseUrl}/auth/google/login`;
+        window.location.href = `${config.apiBaseUrl}/auth/google/login`;
     };
 
     return (

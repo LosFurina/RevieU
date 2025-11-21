@@ -7,6 +7,8 @@ import ForgotPasswordPage from './components/auth/ForgotPasswordPage';
 import GoogleCallbackPage from './components/auth/GoogleCallbackPage';
 import HomePage from './components/content/HomePage';
 import PostPage from './components/content/PostPage';
+import DiscoverPage from './components/content/DiscoverPage';
+import ProfilePage from './components/content/ProfilePage';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +20,8 @@ const App: React.FC = () => {
         <Route path="/auth/google/callback" element={<GoogleCallbackPage />} />
         
         <Route path="/home" element={<HomePage />} />
+        <Route path="/discover" element={<DiscoverPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/post/:id" element={<PostPage />} />
       </Routes>
     </div>
